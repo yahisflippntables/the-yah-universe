@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GOD EP — YAH</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif}
+.bg{position:fixed;inset:0;background:url("Banner.png") center/cover no-repeat;z-index:-3}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:-2}
+.back{position:fixed;top:25px;left:25px;z-index:100;padding:14px 20px;background:#000c;color:#fff;border:1px solid #777;text-decoration:none;font-size:11px;letter-spacing:3px}
+.back:hover,.button:hover{background:#fff;color:#000}
+.page{width:min(900px,90%);margin:auto;padding:100px 0 150px;text-align:center}
+.cover{width:min(430px,85vw);aspect-ratio:1;object-fit:cover;box-shadow:0 30px 100px #000}
+h1{font-size:clamp(50px,9vw,95px);letter-spacing:8px;margin:45px 0 10px}
+.artist{color:#aaa;letter-spacing:9px;margin-bottom:60px}
+.track{width:min(700px,100%);margin:25px auto;padding:30px;background:#000a;border:1px solid #333;text-align:left}
+.track h2{font-size:17px;letter-spacing:3px;margin-top:0}
+audio{width:100%}
+.button{display:inline-block;margin:15px 8px 0 0;padding:12px 18px;color:#fff;border:1px solid #777;text-decoration:none;font-size:10px;letter-spacing:2px}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="overlay"></div>
+
+<a class="back" href="../0%20Yah%20Vault/homescreen.html">← VAULT</a>
+
+<main class="page">
+
+<img class="cover" src="Album%20Cover.png" alt="GOD EP">
+
+<h1>GOD EP</h1>
+<div class="artist">YAH</div>
+
+
+<div class="track">
+<h2>01 — BACK IT UP</h2>
+<audio controls>
+<source src="12%29%201.%20Back%20It%20Up%20%5BE%5D.wav" type="audio/wav">
+</audio>
+<a class="button" href="Back%20it%20up%20lyrics.txt" target="_blank">LYRICS</a>
+</div>
+
+
+<div class="track">
+<h2>02 — SIDE IM ON</h2>
+<audio controls>
+<source src="12%29%202.%20Side%20Im%20On%20%5BE%5D.wav" type="audio/wav">
+</audio>
+<a class="button" href="Side%20im%20on%20lyrics.txt" target="_blank">LYRICS</a>
+</div>
+
+
+<div class="track">
+<h2>03 — ON FIRE</h2>
+<audio controls>
+<source src="12%29%203.%20On%20Fire%20%5BE%5D.wav" type="audio/wav">
+</audio>
+<a class="button" href="On%20fire%20lyrics.txt" target="_blank">LYRICS</a>
+</div>
+
+
+<div class="track">
+<h2>04 — TOLD YOU</h2>
+<audio controls>
+<source src="12%29%204.%20Told%20You%20%5BE%5D.wav" type="audio/wav">
+</audio>
+</div>
+
+
+<div class="track">
+<h2>05 — ACTING UP</h2>
+<audio controls>
+<source src="12%29%205.%20Acting%20Up%20%5BE%5D.wav" type="audio/wav">
+</audio>
+<a class="button" href="Acting%20Up%20lyrics.txt" target="_blank">LYRICS</a>
+</div>
+
+
+<div class="track">
+<h2>06 — IM FLYIN</h2>
+<audio controls>
+<source src="12%29%206.%20Im%20Flyin%20%5BE%5D.wav" type="audio/wav">
+</audio>
+<a class="button" href="I'm%20Flyin%20lyrics.txt" target="_blank">LYRICS</a>
+</div>
+
+
+</main>
+
+<script>
+const players=document.querySelectorAll("audio");
+
+players.forEach(player=>{
+    player.addEventListener("play",()=>{
+        players.forEach(other=>{
+            if(other!==player){
+                other.pause();
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>

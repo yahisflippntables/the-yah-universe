@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>10 — CAN'T COUNT | YAH VAULT</title>
+
+
+<style>
+
+/* ========================================
+   GLOBAL
+======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    background: #000;
+
+    color: white;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* ========================================
+   BACKGROUND VIDEO
+======================================== */
+
+.background-video {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    object-fit: cover;
+
+    z-index: -3;
+
+    pointer-events: none;
+}
+
+
+.background-overlay {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.25),
+            rgba(0,0,0,.55),
+            rgba(0,0,0,.85)
+        );
+
+    z-index: -2;
+
+    pointer-events: none;
+}
+
+
+.background-dark {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 0%,
+            rgba(0,0,0,.08) 45%,
+            rgba(0,0,0,.75) 100%
+        );
+
+    z-index: -1;
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   TOP BAR
+======================================== */
+
+.topbar {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 28px 35px;
+
+    position: relative;
+
+    z-index: 10;
+}
+
+
+.back-button {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .75
+        );
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    transition:
+        color .25s ease;
+}
+
+
+.back-button:hover {
+
+    color: white;
+}
+
+
+.vault-name {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .45
+        );
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+}
+
+
+/* ========================================
+   MAIN
+======================================== */
+
+main {
+
+    width:
+        min(
+            900px,
+            90%
+        );
+
+    margin:
+        25px auto
+        100px;
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* ========================================
+   COVER
+======================================== */
+
+.cover {
+
+    display: block;
+
+    width:
+        min(
+            430px,
+            90vw
+        );
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+
+    margin:
+        0 auto;
+
+    box-shadow:
+        0 30px 100px
+        rgba(
+            0,
+            0,
+            0,
+            .80
+        );
+}
+
+
+/* ========================================
+   SONG INFO
+======================================== */
+
+.number {
+
+    margin-top: 35px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .35
+        );
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin:
+        12px 0 0;
+
+    font-size:
+        clamp(
+            32px,
+            7vw,
+            64px
+        );
+
+    letter-spacing:
+        clamp(
+            3px,
+            1vw,
+            9px
+        );
+}
+
+
+.artist {
+
+    margin-top: 15px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .50
+        );
+
+    font-size: 11px;
+
+    letter-spacing: 7px;
+}
+
+
+/* ========================================
+   DIVIDER
+======================================== */
+
+.divider {
+
+    width: 60px;
+    height: 1px;
+
+    margin:
+        35px auto;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .30
+        );
+}
+
+
+/* ========================================
+   AUDIO
+======================================== */
+
+.audio-section {
+
+    width:
+        min(
+            600px,
+            100%
+        );
+
+    margin:
+        0 auto;
+}
+
+
+.audio-label {
+
+    margin-bottom: 13px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .45
+        );
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+audio {
+
+    display: block;
+
+    width: 100%;
+}
+
+
+/* ========================================
+   BANNER
+======================================== */
+
+.banner {
+
+    display: block;
+
+    width: 100%;
+
+    max-width: 800px;
+
+    margin:
+        60px auto 0;
+
+    box-shadow:
+        0 20px 60px
+        rgba(
+            0,
+            0,
+            0,
+            .65
+        );
+}
+
+
+/* ========================================
+   LINKS
+======================================== */
+
+.links {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            1fr
+        );
+
+    gap: 12px;
+
+    width:
+        min(
+            600px,
+            100%
+        );
+
+    margin:
+        50px auto 0;
+}
+
+
+.file-link {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 55px;
+
+    padding:
+        15px 20px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .22
+        );
+
+    background:
+        rgba(
+            0,
+            0,
+            0,
+            .35
+        );
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    backdrop-filter:
+        blur(
+            10px
+        );
+
+    transition:
+        background .25s ease,
+        border-color .25s ease,
+        transform .25s ease;
+}
+
+
+.file-link:hover {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .10
+        );
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            .60
+        );
+
+    transform:
+        translateY(
+            -2px
+        );
+}
+
+
+/* ========================================
+   MASTER
+======================================== */
+
+.master-section {
+
+    width:
+        min(
+            600px,
+            100%
+        );
+
+    margin:
+        55px auto 0;
+
+    padding-top: 35px;
+
+    border-top:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .15
+        );
+}
+
+
+.master-title {
+
+    margin-bottom: 15px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .35
+        );
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+footer {
+
+    padding:
+        40px 20px;
+
+    text-align: center;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .20
+        );
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .topbar {
+
+        padding:
+            22px 18px;
+    }
+
+
+    .vault-name {
+
+        letter-spacing: 3px;
+    }
+
+
+    main {
+
+        width: 92%;
+
+        margin-top: 15px;
+    }
+
+
+    .links {
+
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ========================================
+     BACKGROUND VIDEO
+======================================== -->
+
+<video
+    id="backgroundVideo"
+    class="background-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+>
+
+    <source
+        src="ScreenRecording_09-25-2026 21-08-49_1.mov"
+        type="video/quicktime"
+    >
+
+</video>
+
+
+<div class="background-overlay"></div>
+
+<div class="background-dark"></div>
+
+
+<!-- ========================================
+     NAVIGATION
+======================================== -->
+
+<div class="topbar">
+
+    <a
+        class="back-button"
+        href="../0 Yah Vault/homescreen.html"
+    >
+        ← VAULT
+    </a>
+
+
+    <div class="vault-name">
+        YAH VAULT
+    </div>
+
+</div>
+
+
+<!-- ========================================
+     MAIN
+======================================== -->
+
+<main>
+
+
+<!-- COVER -->
+
+<img
+    class="cover"
+    src="Album Cover.png"
+    alt="Can't Count album cover"
+>
+
+
+<!-- SONG INFO -->
+
+<div class="number">
+    VAULT 10
+</div>
+
+
+<h1>
+    CAN'T COUNT
+</h1>
+
+
+<div class="artist">
+    YAH
+</div>
+
+
+<div class="divider"></div>
+
+
+<!-- ========================================
+     MAIN MP3
+======================================== -->
+
+<div class="audio-section">
+
+    <div class="audio-label">
+        LISTEN
+    </div>
+
+
+    <audio
+        id="mainAudio"
+        controls
+        preload="metadata"
+    >
+
+        <source
+            src="Can't Count .mp3"
+            type="audio/mpeg"
+        >
+
+        Your browser does not support audio playback.
+
+    </audio>
+
+</div>
+
+
+<!-- ========================================
+     BANNER
+======================================== -->
+
+<img
+    class="banner"
+    src="Banner.png"
+    alt="Can't Count banner"
+>
+
+
+<!-- ========================================
+     LYRICS
+======================================== -->
+
+<div class="links">
+
+
+    <a
+        class="file-link"
+        href="Cant Count.txt"
+        target="_blank"
+    >
+        LYRICS
+    </a>
+
+
+    <a
+        class="file-link"
+        href="Cant Count.pdf"
+        target="_blank"
+    >
+        LYRIC SHEET
+    </a>
+
+
+</div>
+
+
+<!-- ========================================
+     FINAL MASTER
+======================================== -->
+
+<div class="master-section">
+
+    <div class="master-title">
+        FINAL MASTER • WAV
+    </div>
+
+
+    <audio
+        id="masterAudio"
+        controls
+        preload="metadata"
+    >
+
+        <source
+            src="Can't Count final [E].wav"
+            type="audio/wav"
+        >
+
+        Your browser does not support audio playback.
+
+    </audio>
+
+</div>
+
+
+</main>
+
+
+<footer>
+
+    YAH • THE VAULT
+
+</footer>
+
+
+<script>
+
+/* ========================================
+   BACKGROUND VIDEO
+======================================== */
+
+const backgroundVideo =
+    document.getElementById("backgroundVideo");
+
+
+backgroundVideo.muted = true;
+backgroundVideo.loop = true;
+
+
+/*
+Keep attempting to run the background
+video without interfering with the music.
+*/
+
+function playBackgroundVideo() {
+
+    if (backgroundVideo.paused) {
+
+        backgroundVideo
+            .play()
+            .catch(() => {});
+
+    }
+
+}
+
+
+window.addEventListener(
+    "load",
+    playBackgroundVideo
+);
+
+
+/*
+If Chrome blocks autoplay,
+the first interaction starts it.
+*/
+
+document.addEventListener(
+    "click",
+    playBackgroundVideo,
+    {
+        once: true
+    }
+);
+
+
+/* ========================================
+   MUSIC PLAYERS
+======================================== */
+
+const mainAudio =
+    document.getElementById("mainAudio");
+
+const masterAudio =
+    document.getElementById("masterAudio");
+
+
+/*
+If the regular MP3 starts,
+pause only the master WAV.
+
+DO NOT pause the background video.
+*/
+
+mainAudio.addEventListener(
+    "play",
+    function() {
+
+        masterAudio.pause();
+
+        playBackgroundVideo();
+
+    }
+);
+
+
+/*
+If the master WAV starts,
+pause only the regular MP3.
+
+DO NOT pause the background video.
+*/
+
+masterAudio.addEventListener(
+    "play",
+    function() {
+
+        mainAudio.pause();
+
+        playBackgroundVideo();
+
+    }
+);
+
+
+/* ========================================
+   KEEP BACKGROUND LOOPING
+======================================== */
+
+backgroundVideo.addEventListener(
+    "ended",
+    function() {
+
+        backgroundVideo.currentTime = 0;
+
+        playBackgroundVideo();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

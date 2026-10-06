@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Flat Broke — YAH</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            margin: 0;
+
+            min-height: 100vh;
+
+            background: black;
+
+            color: white;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+        }
+
+
+        /* =========================
+           MOVING VIDEO BACKGROUND
+        ========================= */
+
+        .background-video {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100vw;
+            height: 100vh;
+
+            object-fit: cover;
+
+            z-index: -3;
+
+            pointer-events: none;
+        }
+
+
+        /* DARK LAYER OVER VIDEO */
+
+        .background-overlay {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,.25),
+                    rgba(0,0,0,.60),
+                    rgba(0,0,0,.85)
+                );
+
+            z-index: -2;
+
+            pointer-events: none;
+        }
+
+
+
+        /* =========================
+           BACK BUTTON
+        ========================= */
+
+        .back {
+
+            position: fixed;
+
+            top: 22px;
+            left: 22px;
+
+            z-index: 100;
+
+            padding: 13px 18px;
+
+            background:
+                rgba(0,0,0,.55);
+
+            backdrop-filter:
+                blur(12px);
+
+            border:
+                1px solid rgba(255,255,255,.25);
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+        }
+
+
+        .back:hover {
+
+            background: white;
+
+            color: black;
+        }
+
+
+
+        /* =========================
+           PAGE
+        ========================= */
+
+        .page {
+
+            width:
+                min(900px, 90%);
+
+            margin: auto;
+
+            padding:
+                100px 0 150px;
+
+            text-align: center;
+        }
+
+
+
+        /* =========================
+           COVER
+        ========================= */
+
+        .cover {
+
+            display: block;
+
+            width:
+                min(430px, 85vw);
+
+            aspect-ratio:
+                1 / 1;
+
+            object-fit: cover;
+
+            margin:
+                30px auto 0;
+
+            box-shadow:
+                0 30px 100px
+                rgba(0,0,0,.85);
+        }
+
+
+
+        /* =========================
+           TITLE
+        ========================= */
+
+        .title {
+
+            margin:
+                45px 0 10px;
+
+            font-size:
+                clamp(
+                    42px,
+                    8vw,
+                    85px
+                );
+
+            line-height: .95;
+
+            letter-spacing: 8px;
+
+            text-shadow:
+                0 5px 30px black;
+        }
+
+
+        .artist {
+
+            margin-bottom:
+                50px;
+
+            color:
+                rgba(255,255,255,.65);
+
+            font-size: 13px;
+
+            letter-spacing: 9px;
+        }
+
+
+
+        /* =========================
+           MUSIC PLAYER
+        ========================= */
+
+        .player-container {
+
+            width:
+                min(650px, 100%);
+
+            margin: auto;
+
+            padding: 20px;
+
+            background:
+                rgba(0,0,0,.45);
+
+            border:
+                1px solid
+                rgba(255,255,255,.15);
+
+            backdrop-filter:
+                blur(15px);
+        }
+
+
+        audio {
+
+            display: block;
+
+            width: 100%;
+        }
+
+
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+
+            margin-top:
+                110px;
+
+            padding:
+                40px 25px;
+
+            background:
+                rgba(0,0,0,.35);
+
+            border:
+                1px solid
+                rgba(255,255,255,.10);
+
+            backdrop-filter:
+                blur(15px);
+        }
+
+
+        .section-title {
+
+            margin-bottom:
+                30px;
+
+            color:
+                rgba(255,255,255,.60);
+
+            font-size: 11px;
+
+            letter-spacing: 8px;
+        }
+
+
+
+        /* =========================
+           ARTWORK
+        ========================= */
+
+        .banner {
+
+            display: block;
+
+            width: 100%;
+
+            margin: auto;
+        }
+
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .button {
+
+            display:
+                inline-block;
+
+            margin:
+                8px;
+
+            padding:
+                17px 25px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.35);
+
+            color: white;
+
+            background:
+                rgba(0,0,0,.30);
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            transition:
+                .25s;
+        }
+
+
+        .button:hover {
+
+            background: white;
+
+            color: black;
+        }
+
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media
+        (max-width: 600px) {
+
+            .page {
+
+                padding-top:
+                    85px;
+            }
+
+
+            section {
+
+                margin-top:
+                    70px;
+
+                padding:
+                    25px 15px;
+            }
+
+
+            .title {
+
+                letter-spacing:
+                    4px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+    <!-- =================================
+         COSMIC WATER BACKGROUND
+    ================================== -->
+
+    <video
+        class="background-video"
+        autoplay
+        muted
+        loop
+        playsinline
+    >
+
+        <source
+            src="./cosmic_water_rippling_97395_Seedance_25.mp4"
+            type="video/mp4"
+        >
+
+    </video>
+
+
+    <!-- DARK OVERLAY -->
+
+    <div
+        class="background-overlay"
+    ></div>
+
+
+
+    <!-- =================================
+         BACK TO YAH VAULT
+    ================================== -->
+
+    <a
+        class="back"
+        href="../index.html"
+    >
+
+        ← VAULT
+
+    </a>
+
+
+
+    <!-- =================================
+         MAIN PAGE
+    ================================== -->
+
+    <main class="page">
+
+
+        <!-- COVER -->
+
+        <img
+            class="cover"
+            src="./Album Cover.png"
+            alt="Flat Broke Cover"
+        >
+
+
+
+        <!-- SONG -->
+
+        <h1 class="title">
+
+            FLAT BROKE
+
+        </h1>
+
+
+        <div class="artist">
+
+            YAH
+
+        </div>
+
+
+
+        <!-- =================================
+             MP3 PLAYER
+        ================================== -->
+
+        <div
+            class="player-container"
+        >
+
+            <audio
+                controls
+                preload="metadata"
+            >
+
+                <source
+                    src="./1 Flat Broke [E].mp3"
+                    type="audio/mpeg"
+                >
+
+            </audio>
+
+        </div>
+
+
+
+        <!-- =================================
+             ARTWORK
+        ================================== -->
+
+        <section>
+
+            <div
+                class="section-title"
+            >
+
+                ARTWORK
+
+            </div>
+
+
+            <img
+                class="banner"
+                src="./Banner.png"
+                alt="Flat Broke Banner"
+            >
+
+        </section>
+
+
+
+        <!-- =================================
+             LYRICS PDF
+        ================================== -->
+
+        <section>
+
+            <div
+                class="section-title"
+            >
+
+                LYRICS
+
+            </div>
+
+
+            <a
+                class="button"
+                href="./Flat broke lyrics w timestamps.pdf"
+                target="_blank"
+            >
+
+                OPEN TIMESTAMPED LYRICS
+
+            </a>
+
+        </section>
+
+
+
+        <!-- =================================
+             MASTER WAV
+        ================================== -->
+
+        <section>
+
+            <div
+                class="section-title"
+            >
+
+                MASTER
+
+            </div>
+
+
+            <audio
+                controls
+                preload="metadata"
+            >
+
+                <source
+                    src="./Flat Broke final.wav"
+                    type="audio/wav"
+                >
+
+            </audio>
+
+
+            <br><br>
+
+
+            <a
+                class="button"
+                href="./Flat Broke final.wav"
+                target="_blank"
+            >
+
+                OPEN MASTER WAV
+
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Nigga Moment — YAH</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif}
+.bg{position:fixed;inset:0;background:url("banner.png") center/cover no-repeat;z-index:-3}
+.overlay{position:fixed;inset:0;background:linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.6),rgba(0,0,0,.95));z-index:-2}
+.back{position:fixed;top:25px;left:25px;z-index:1000;padding:14px 20px;color:white;background:rgba(0,0,0,.65);border:1px solid #777;text-decoration:none;font-size:11px;letter-spacing:3px}
+.back:hover,.button:hover{background:white;color:black}
+.page{width:min(900px,90%);margin:auto;padding:100px 0 150px;text-align:center}
+.cover{width:min(430px,85vw);aspect-ratio:1;object-fit:cover;box-shadow:0 30px 100px #000}
+h1{margin:45px 0 10px;font-size:clamp(40px,7vw,80px);letter-spacing:5px}
+.artist{margin-bottom:50px;color:#aaa;letter-spacing:9px}
+.player,section{width:min(650px,100%);margin:0 auto;padding:20px;background:rgba(0,0,0,.55);border:1px solid #333;backdrop-filter:blur(15px)}
+section{width:100%;margin-top:90px;padding:40px 25px}
+audio{width:100%}
+.label{margin-bottom:30px;color:#aaa;font-size:11px;letter-spacing:8px}
+.banner{width:100%}
+.button{display:inline-block;margin:8px;padding:17px 25px;color:white;border:1px solid #777;text-decoration:none;font-size:11px;letter-spacing:3px}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="overlay"></div>
+
+<a class="back" href="../0%20Yah%20Vault/homescreen.html">← VAULT</a>
+
+<main class="page">
+
+<img class="cover" src="album%20cover.png" alt="Nigga Moment">
+
+<h1>NIGGA MOMENT</h1>
+<div class="artist">YAH</div>
+
+<div class="player">
+<audio controls preload="metadata">
+<source src="Nigga%20Moment%20%5BE%5D.wav" type="audio/wav">
+</audio>
+</div>
+
+<section>
+<div class="label">ARTWORK</div>
+<img class="banner" src="banner.png" alt="Nigga Moment Banner">
+</section>
+
+<section>
+<div class="label">LYRICS</div>
+<a class="button" href="Nigga%20Moment%20lyrics.txt" target="_blank">OPEN LYRICS</a>
+<a class="button" href="Nigga%20Moment.pdf" target="_blank">OPEN PDF</a>
+</section>
+
+<section>
+<div class="label">MASTER</div>
+<audio controls>
+<source src="Nigga%20Moment%20%5BE%5D.wav" type="audio/wav">
+</audio>
+</section>
+
+</main>
+
+<script>
+const p=document.querySelectorAll("audio");
+p.forEach(a=>a.addEventListener("play",()=>p.forEach(b=>{if(a!==b)b.pause()})));
+</script>
+
+</body>
+</html>

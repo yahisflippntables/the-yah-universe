@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>The Yah Way — YAH</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#000;color:white;font-family:Arial,Helvetica,sans-serif}
+.bg{position:fixed;inset:0;background:url("Banner.png") center/cover no-repeat;z-index:-3}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:-2}
+.back{position:fixed;top:25px;left:25px;z-index:1000;padding:14px 20px;color:white;background:#000b;border:1px solid #777;text-decoration:none;letter-spacing:3px;font-size:11px}
+.back:hover{background:white;color:black}
+.page{width:min(900px,90%);margin:auto;padding:100px 0 150px;text-align:center}
+.cover{width:min(430px,85vw);aspect-ratio:1;object-fit:cover;box-shadow:0 30px 100px #000}
+h1{font-size:clamp(40px,7vw,80px);letter-spacing:6px;margin:45px 0 10px}
+.artist{color:#aaa;letter-spacing:9px;margin-bottom:60px}
+.track{margin:25px auto;padding:30px;width:min(700px,100%);background:#000a;border:1px solid #333;text-align:left}
+.track h2{font-size:18px;letter-spacing:3px}
+audio{width:100%}
+.button{display:inline-block;margin-top:15px;padding:12px 18px;color:white;border:1px solid #777;text-decoration:none;font-size:10px;letter-spacing:2px}
+.button:hover{background:white;color:black}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="overlay"></div>
+
+<a class="back" href="../0%20Yah%20Vault/homescreen.html">← VAULT</a>
+
+<main class="page">
+
+<img class="cover" src="Album%20Cover.jpg" alt="The Yah Way">
+
+<h1>THE YAH WAY</h1>
+<div class="artist">YAH</div>
+
+<div class="track">
+<h2>01 — A OKAY</h2>
+<audio controls>
+<source src="3%29%201.A%20Okay%20%5BE%5D.wav" type="audio/wav">
+</audio>
+<a class="button" href="A%20Okay%20lyrics.txt" target="_blank">LYRICS</a>
+<a class="button" href="A%20Okay.pdf" target="_blank">PDF</a>
+</div>
+
+<div class="track">
+<h2>02 — SCREW IT</h2>
+<audio controls>
+<source src="3%29%202.Screw%20It%20%5BE%5D.wav" type="audio/wav">
+</audio>
+<a class="button" href="Screw%20it%20lyrics.txt" target="_blank">LYRICS</a>
+<a class="button" href="Screw%20it.pdf" target="_blank">PDF</a>
+</div>
+
+<div class="track">
+<h2>03 — IS IT NOT</h2>
+<audio controls>
+<source src="3%29%203.Is%20It%20Not%20%5BE%5D.wav" type="audio/wav">
+</audio>
+<a class="button" href="Is%20It%20Not%20lyrics.txt" target="_blank">LYRICS</a>
+<a class="button" href="Is%20It%20Not%20.pdf" target="_blank">PDF</a>
+</div>
+
+<div class="track">
+<h2>04 — 2 EASI</h2>
+<audio controls>
+<source src="3%29%204.2%20Easi%20%5BE%5D.wav" type="audio/wav">
+</audio>
+<a class="button" href="2%20Easi%20lyrics.txt" target="_blank">LYRICS</a>
+<a class="button" href="2%20Easi.pdf" target="_blank">PDF</a>
+</div>
+
+</main>
+
+<script>
+const p=document.querySelectorAll("audio");
+p.forEach(a=>a.addEventListener("play",()=>p.forEach(b=>{if(a!==b)b.pause()})));
+</script>
+
+</body>
+</html>
